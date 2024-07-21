@@ -21,6 +21,8 @@ def init_settings():
             init_mistral()
         case "azure-openai":
             init_azure_openai()
+        case "toegtherai":
+            init_togetherai()
         case "t-systems":
             from .llmhub import init_llmhub
 
@@ -28,8 +30,8 @@ def init_settings():
         case _:
             raise ValueError(f"Invalid model provider: {model_provider}")
 
-    Settings.chunk_size = int(os.getenv("CHUNK_SIZE", "1024"))
-    Settings.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", "20"))
+    Settings.chunk_size = int(os.getenv("CHUNK_SIZE", "512"))
+    Settings.chunk_overlap = int(os.getenv("CHUNK_OVERLAP", "100"))
 
 
 def init_ollama():
@@ -164,3 +166,16 @@ def init_mistral():
 
     Settings.llm = MistralAI(model=os.getenv("MODEL"))
     Settings.embed_model = MistralAIEmbedding(model_name=os.getenv("EMBEDDING_MODEL"))
+
+def init_togetherai():
+    from llama_index.embeddings.together import TogetherEmbedding
+    from llama_index.llms.together import TogetherLLM
+
+    Settings.llm = TogetherLLM(
+        model=os.getenv("MODEL"),
+        api_key=os.getenv("TOGETHER_AI_KEY")
+    )
+    Settings.embed_model = TogetherEmbedding(
+        model_name=os.getenv("EMBEDDING_MODEL"),
+        api_key=os.getenv("TOGETHER_AI_KEY")
+    )
