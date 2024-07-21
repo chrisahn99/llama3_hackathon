@@ -27,9 +27,6 @@ version = "^0.1.21"
 [tool.poetry.dependencies.pymilvus]
 version = "2.4.4"
 
-[tool.poetry.dependencies.milvus-lite]
-version = "2.4.8"
-
 [tool.poetry.dependencies.docx2txt]
 version = "^0.8"
 

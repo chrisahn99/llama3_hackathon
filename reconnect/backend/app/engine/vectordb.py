@@ -12,8 +12,7 @@ def get_vector_store():
         )
     store = MilvusVectorStore(
         uri=address,
-        user=os.getenv("MILVUS_USERNAME"),
-        password=os.getenv("MILVUS_PASSWORD"),
+        token=os.getenv("MILVUS_TOKEN"),
         collection_name=collection,
         dim=int(os.getenv("EMBEDDING_DIM")),
     )
