@@ -21,7 +21,7 @@ def init_settings():
             init_mistral()
         case "azure-openai":
             init_azure_openai()
-        case "toegtherai":
+        case "togetherai":
             init_togetherai()
         case "t-systems":
             from .llmhub import init_llmhub
