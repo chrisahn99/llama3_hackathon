@@ -22,7 +22,7 @@ extras = [ "standard" ]
 version = "^0.23.2"
 
 [tool.poetry.dependencies.llama-index-vector-stores-milvus]
-version = "^0.1.20"
+version = "^0.1.21"
 
 [tool.poetry.dependencies.pymilvus]
 version = "2.4.4"
